@@ -1,6 +1,7 @@
 {
 	"name": "my/app",
     "require": {
-        "phreeze/phreeze": "dev-master"
+        "phreeze/phreeze": "dev-master",
+		"twilio/sdk": "^4.10"
     }
 }

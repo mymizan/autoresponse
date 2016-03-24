@@ -72,13 +72,11 @@ GlobalConfig::$TEMPLATE_PATH = GlobalConfig::$APP_ROOT . '/templates/';
 GlobalConfig::$ROUTE_MAP = array(
 
 	// default controller when no route specified
-	'GET:' => array('route' => 'Default.Home'),
+	'GET:' => array('route' => 'Topic.ListView'),
 		
 	// example authentication routes
 	'GET:loginform' => array('route' => 'SecureExample.LoginForm'),
 	'POST:login' => array('route' => 'SecureExample.Login'),
-	'GET:secureuser' => array('route' => 'SecureExample.UserPage'),
-	'GET:secureadmin' => array('route' => 'SecureExample.AdminPage'),
 	'GET:logout' => array('route' => 'SecureExample.Logout'),
 		
 	// Log

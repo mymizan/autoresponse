@@ -62,9 +62,9 @@
 						<a class="brand" href="./">Autoresponse</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
+								<li <?php if ($this->nav=='topics') { echo 'class="active"'; } ?>><a href="./topics">Topics</a></li>
 								<li <?php if ($this->nav=='logs') { echo 'class="active"'; } ?>><a href="./logs">Logs</a></li>
 								<li <?php if ($this->nav=='settings') { echo 'class="active"'; } ?>><a href="./settings">Settings</a></li>
-								<li <?php if ($this->nav=='topics') { echo 'class="active"'; } ?>><a href="./topics">Topics</a></li>
 								</ul>
 								</li>
 							</ul>
