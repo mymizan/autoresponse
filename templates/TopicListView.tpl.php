@@ -83,7 +83,7 @@
 				<div id="totalHitsInputContainer" class="control-group">
 					<label class="control-label" for="totalHits">Total Hits</label>
 					<div class="controls inline-inputs">
-						<input type="text" class="input-xlarge" id="totalHits" placeholder="Total Hits" value="<%= _.escape(item.get('totalHits') || '') %>">
+						<input disabled='disabled' value='0' type="text" class="input-xlarge" id="totalHits" placeholder="Total Hits" value="<%= _.escape(item.get('totalHits') || '') %>">
 						<span class="help-inline"></span>
 					</div>
 				</div>

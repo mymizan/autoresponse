@@ -34,7 +34,7 @@
 		<table class="collection table table-bordered table-hover">
 		<thead>
 			<tr>
-				<th id="header_Id">Id<% if (page.orderBy == 'Id') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
+				<!-- <th id="header_Id">Id<% if (page.orderBy == 'Id') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th> -->
 				<th id="header_From">From<% if (page.orderBy == 'From') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 				<th id="header_TextMessage">Text Message<% if (page.orderBy == 'TextMessage') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 				<th id="header_Date">Date<% if (page.orderBy == 'Date') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
@@ -43,7 +43,7 @@
 		<tbody>
 		<% items.each(function(item) { %>
 			<tr id="<%= _.escape(item.get('id')) %>">
-				<td><%= _.escape(item.get('id') || '') %></td>
+				<!-- <td><%= _.escape(item.get('id') || '') %></td> -->
 				<td><%= _.escape(item.get('from') || '') %></td>
 				<td><%= _.escape(item.get('textMessage') || '') %></td>
 				<td><%if (item.get('date')) { %><%= _date(app.parseDate(item.get('date'))).format('MMM D, YYYY h:mm A') %><% } else { %>NULL<% } %></td>
@@ -137,11 +137,6 @@
 	
 	<div id="logCollectionContainer" class="collectionContainer">
 	</div>
-
-	<p id="newButtonContainer" class="buttonContainer">
-		<button id="newLogButton" class="btn btn-primary">Add Log</button>
-	</p>
-
 </div> <!-- /container -->
 
 <?php

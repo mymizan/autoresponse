@@ -4,6 +4,9 @@
 /** import supporting libraries */
 require_once("AppBaseController.php");
 require_once("Model/Topic.php");
+require_once("Model/Log.php");
+require_once("Model/Setting.php");
+require_once(dirname(dirname(__DIR__)) . '/vendor/autoload.php');
 
 /**
  * TopicController is the controller class for the Topic object.  The
@@ -250,6 +253,46 @@ class TopicController extends AppBaseController
 		catch (Exception $ex)
 		{
 			$this->RenderExceptionJSON($ex);
+		}
+	}
+
+	public function TwilioCallback()
+	{
+		if (empty($_REQUEST['From']) || empty($_REQUEST['Body']))
+			die(1);
+
+		$from = trim($_REQUEST['From']);
+		$sms  = trim($_REQUEST['Body']);
+
+		$criteria = new TopicCriteria();
+		$criteria->Keyword_Equals = $sms;
+		$topics = $this->Phreezer->Query('Topic',$criteria);
+		$result = $topics->ToObjectArray(true, $this->SimpleObjectParams());
+		if (count($result) > 0){
+			//reply with twilio
+			$criteria = new SettingCriteria();
+			$criteria->Option_Equals = 'from_number';
+			$from_number = $this->Phreezer->GetByCriteria('Setting',$criteria);
+
+			$response = new Services_Twilio_Twiml();
+			$response->message($result[0]->reply, array(
+			  'to' => $from,
+			  'from' => $from_number->Value
+			));
+			print $response;
+
+			//update hit counter
+			$topic = $this->Phreezer->Get('Topic',$result[0]->id);
+			$topic->TotalHits = $topic->TotalHits + 1;
+			$topic->Save();
+
+			//log incoming sms
+			$log = new Log($this->Phreezer);
+			$log->From = $from;
+			$log->TextMessage = $sms;
+			$log->Date = date('Y-m-d H:i:s',time());
+			$log->Save();
+			
 		}
 	}
 }

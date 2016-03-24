@@ -106,6 +106,10 @@ GlobalConfig::$ROUTE_MAP = array(
 	'PUT:api/topic/(:num)' => array('route' => 'Topic.Update', 'params' => array('id' => 2)),
 	'DELETE:api/topic/(:num)' => array('route' => 'Topic.Delete', 'params' => array('id' => 2)),
 
+	//Twilio callback
+	'GET:twilioCallback' => array('route' => 'Topic.TwilioCallback'),
+	'POST:twilioCallback' => array('route' => 'Topic.TwilioCallback'),
+
 	// catch any broken API urls
 	'GET:api/(:any)' => array('route' => 'Default.ErrorApi404'),
 	'PUT:api/(:any)' => array('route' => 'Default.ErrorApi404'),

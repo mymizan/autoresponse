@@ -17,19 +17,6 @@
 	<!-- #### this view/tempalate is used for multiple pages.  the controller sets the 'page' variable to display differnet content ####  -->
 	
 	<?php if ($this->page == 'login') { ?>
-	
-		<div class="hero-unit">
-			<h1>Login Example</h1>
-			<p>This is an example of Phreeze authentication.  The default credentials are <strong>demo/pass</strong> and <strong>admin/pass</strong>.</p>
-			<p>
-				<a href="secureuser" class="btn btn-primary btn-large">Visit User Page</a>
-				<a href="secureadmin" class="btn btn-primary btn-large">Visit Admin Page</a>
-				<?php if (isset($this->currentUser)) { ?>
-					<a href="logout" class="btn btn-primary btn-large">Logout</a>
-				<?php } ?>
-			</p>
-		</div>
-	
 		<form class="well" method="post" action="login">
 			<fieldset>
 			<legend>Enter your credentials</legend>
